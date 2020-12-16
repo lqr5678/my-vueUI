@@ -19,7 +19,7 @@
     "core-js": "^3.6.5",
     "echarts": "^4.9.0",
     "lodash": "^4.17.20",
-    "resize-detector": "^0.2.2",
+    "element-ui": "^2.10.1",
     "vue": "^2.6.11"
   },
   "devDependencies": {
