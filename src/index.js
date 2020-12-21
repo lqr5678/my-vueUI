@@ -1,7 +1,9 @@
 // src/index.js 示例，主要是引入(import)组件再导出(export)，包括Vue.use所需的 install函数处理
 import MyButton from "../packages/my-button/index";
+import sgUploadId from "../packages/sg-upload-id/index";
+import sgEquipment from "../packages/sg-equipment/index";
 
-const components = [MyButton];
+const components = [MyButton, sgUploadId, sgEquipment];
 
 // Vue.use() 一次性安装所有组件
 const install = function(Vue) {
@@ -22,4 +24,6 @@ if (typeof window !== undefined && window.Vue) {
 export default {
   install, // 用于ES modules，import Vue 后直接使用 Vue.use()
   MyButton, // 支持解构赋值按需引入单个组件
+  sgUploadId,
+  sgEquipment
 };
