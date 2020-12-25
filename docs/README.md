@@ -1,3 +1,102 @@
+##### sg-input
+
+<vuep template="#sgInput"></vuep>
+
+<script v-pre type="text/x-template" id="sgInput">
+<template>
+<div>
+
+    <el-form ref="refForm" :model="inputForm">
+      <!-- 不检验 -->
+      <sg-input v-model="inputForm.sginput" sgcc-input-type="contactName"></sg-input>
+      <!-- 内置校验类型 姓名 -->
+      <sg-input v-model="inputForm.sginput1" prop="sginput1" sgcc-input-type="contactName"></sg-input>
+      <!-- 自定义校验只校验不为空 -->
+      <sg-input v-model="inputForm.sginput2" prop="sginput2" sgcc-input-type="contactName" custom="姓名"></sg-input>
+      <!-- 自定义校验 -->
+      <sg-input v-model="inputForm.sginput3" prop="sginput3" sgcc-input-type="sgcustom" :custom="made" sgcc-lable-name="验证码:"></sg-input>
+    </el-form>
+    <button @click="submit">校验</button>
+    <button @click="resetForm">重置</button>
+
+</div>
+
+</template>
+
+<script>
+ module.exports = {
+
+    data() {
+      return {
+        inputForm: {
+            sginput: "",
+            sginput1:"",
+            sginput2:"",
+            sginput3:""
+        },
+        made: {
+            uetest: /^\d{6}$/,
+            hintErr: "验证码",
+        },
+      }
+    },
+    methods: {
+       resetForm() {
+        this.$refs["refForm"].resetFields();
+      },
+      submit() {
+          this.$refs["refForm"].validate((valid,object)=> {
+          console.log(object,valid);
+          if (!valid) {
+              this.$message.error('校验错误');
+              this.$nextTick(() => {
+                  var isError= document.getElementsByClassName("is-error");
+                  console.log(isError);
+                  isError[0].querySelector('input').focus();
+              })
+              return
+          }else {
+            this.$message({
+              message: '校验成功',
+              type: 'success'
+            })}
+          })
+      }
+    }
+
+  }
+</script>
+
+###### 属性值
+
+| 参数           | 说明                                                         | 类型          | 默认值            |
+| -------------- | ------------------------------------------------------------ | ------------- | ----------------- |
+| labelWidth     | 表单域标签的宽度，例如 '50px'。作为 Form 直接子元素的 form-item 会继承该值。支持 `auto` 。 | string        | —                 |
+| sginputBehind  | 输入框后面的追加的文字 -如果传就显示如果不传就不显示 (kvw)   | string        | —                 |
+| isRequired     | 是否必填                                                     | boolean       | false             |
+| ishideAsterisk | 是否显示必填字段的标签旁边的红色星号                         | boolean       | false             |
+| sgccLableName  | label，如果不传就不显示                                      | string        | —                 |
+| sgType         | 输入框类型 原生属性                                          | string        | input             |
+| sgplaceHolder  | 占位符                                                       | String        | —                 |
+| isinlineMsg    | 错误校验 是否以行内形式展示                                  | boolean       | true              |
+| isWarnMsg      | 是否显示提示说明                                             | boolean       | false             |
+| isWarnMsgtext  | 提示说明文字                                                 | String        | —                 |
+| sgccTextAlign  | 对齐方式  right 右 left 左                                   | String        | right             |
+| isshowMeg      | 是否显示校验错误信息                                         | boolean       | true              |
+| sgError        | 表单验证错误信息, 设置该值会使表单验证状态变为error，并显示该错误信息 | String        | —                 |
+| sgccInputType  | 校验类型（封装的正则）                                       | String        | —                 |
+| custom         | 自定义校验(如果只校验不为空只传提示文字), (如果校验正则传对象-正则字段**uetest**和提示**hintErr**字段)) | String/object | —/(uetes/hintErr) |
+| sgError        | 表单验证错误信息, 设置该值会使表单验证状态变为error，并显示该错误信息 | String        | —                 |
+| custNoType     | 身份证军人证户口本类型                                       | String/Number | —                 |
+|                |                                                              |               |                   |
+
+###### Option Attributes
+
+| 参数  | 说明                                                         | 类型                 | 默认值 |
+| ----- | ------------------------------------------------------------ | -------------------- | ------ |
+| value | 选项的值                                                     | string/number/object | —      |
+| prop  | 表单域 model 字段，在使用 validate、resetFields 方法的情况下，该属性是必填的 | string               | —      |
+
 ## sg-radio
 sg-radio组件是一个单选框组件
 

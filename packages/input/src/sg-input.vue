@@ -92,7 +92,7 @@ export default {
      * @param {custNoType} //身份证军人证户口本类型
      */
     custNoType: [String, Number],
-    custom: Object,
+    custom: [Object, String],
     sgccInputType: String,
     prop: String,
     value: [String, Number],
@@ -202,17 +202,16 @@ export default {
   },
 };
 </script>
-<style lang='scss' scoped>
-.sg-form /deep/ {
-  .el-input,
-  .el-textarea {
+<style scoped>
+.sg-form >>> .el-input,
+  .sg-form >>> .el-textarea {
     width: 240px;
   }
-  .el-textarea .el-input__count {
+  .sg-form >>> .el-textarea .el-input__count {
     background: transparent;
     bottom: 0;
   }
-  .sg-errtxt {
+  .sg-form >>> .sg-errtxt {
     font-style: normal;
     position: absolute;
     top: auto;
@@ -224,5 +223,4 @@ export default {
     line-height: 1;
     padding-top: 14px;
   }
-}
 </style>
