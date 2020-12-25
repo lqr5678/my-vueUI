@@ -2,8 +2,13 @@
 import MyButton from "../packages/my-button/index";
 import sgUploadId from "../packages/sg-upload-id/index";
 import sgEquipment from "../packages/sg-equipment/index";
+import SgSelect from "../packages/select/index";
+import SgUpload from "../packages/upload/index";
+import sgRadio from "../packages/sg-radio/index";
+import sgDate from "../packages/sg-date/index";
+import SgInput from "../packages/input/index";
 
-const components = [MyButton, sgUploadId, sgEquipment];
+const components = [MyButton, sgUploadId, sgEquipment, SgSelect, SgUpload, sgRadio, sgDate, SgInput];
 
 // Vue.use() 一次性安装所有组件
 const install = function(Vue) {
@@ -25,5 +30,10 @@ export default {
   install, // 用于ES modules，import Vue 后直接使用 Vue.use()
   MyButton, // 支持解构赋值按需引入单个组件
   sgUploadId,
-  sgEquipment
+  sgEquipment,
+  SgSelect,
+  SgUpload,
+  sgRadio,
+  sgDate,
+  SgInput
 };

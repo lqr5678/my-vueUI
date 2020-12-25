@@ -1,6 +1,6 @@
 <template>
   <div>
-    <!-- <el-form :model="ruleForm" :rules="rules" ref="ruleForm" inline-message>
+    <el-form :model="ruleForm" :rules="rules" ref="ruleForm" inline-message>
       <HelloWorld
         :tableData="equipList"
         :ischgTrans="ischgTrans"
@@ -39,17 +39,17 @@
       <h2 @click="handleChgTrans()">
         ischgTrans转换模式
       </h2>
-    </el-form> -->
+    </el-form>
 
-    <HelloWorld @sendImgInfo="sendImgInfo" :frontImg='imgBase64' :isRemove='isRemove'></HelloWorld>
-    <h3 @click="isRemoveFn">上传失败</h3>
+    <!-- <HelloWorld @sendImgInfo="sendImgInfo" :frontImg='imgBase64' :isRemove='isRemove'></HelloWorld>
+    <h3 @click="isRemoveFn">上传失败</h3> -->
 
     <!-- <HelloWorld></HelloWorld> -->
   </div>
 </template>
 
 <script>
-import HelloWorld from './UploadID.vue'
+import HelloWorld from './equipmentCom.vue'
 
 export default {
   components: {
@@ -66,7 +66,7 @@ export default {
       ruleForm: {
         chosen_capacity: '',
       },
-      ischgTrans: '0',
+      ischgTrans: '1',
       isRemove: false, // 是否删除
       equipList: [
         {

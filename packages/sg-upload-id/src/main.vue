@@ -111,8 +111,8 @@ export default {
   created(){
   },
   mounted: function () {
-    // document.querySelector('.back .el-upload--picture-card').style.backgroundImage = `url(${this.backImg})`
-    // document.querySelector('.front .el-upload--picture-card').style.backgroundImage = `url(${this.frontImg})`
+    document.querySelector('.back .el-upload--picture-card').style.backgroundImage = `url(${this.backImg})`
+    document.querySelector('.front .el-upload--picture-card').style.backgroundImage = `url(${this.frontImg})`
   },
   data() {
     return {

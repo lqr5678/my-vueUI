@@ -51,7 +51,7 @@
             @selection-change="handleSelectionChange"
             class="form_table mark"
           >
-					<slot name='tableInfo'></slot>
+					<slot name='table-info'></slot>
             <!-- <el-table-column
               type="selection"
               label
@@ -122,7 +122,7 @@ export default {
 			handler(newVal, oldVal) {
         this.chosen_capacity = newVal
 				// console.log(newVal, 'newValvalue')
-			}
+			},
 		},
 
     'ischgTrans': {

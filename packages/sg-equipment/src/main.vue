@@ -104,7 +104,7 @@ export default {
     },
     'chosen_capacity': {
       handler(newVal, oldVal) {
-        // console.log(newVal, 'newVal')
+        console.log(newVal, '子组件newVal')
         this.$emit('input', newVal);
       }
     },
@@ -120,7 +120,7 @@ export default {
   methods: {
     // 选中的设备
     handleSelectionChange(val) {
-      this.$emit('handleSelectionChange', val)
+      this.$emit('handle-selection-change', val)
     },
   }
 }
