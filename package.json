@@ -1,9 +1,9 @@
 {
-  "name": "@wsgw/sg_vue",
+  "name": "@wew/e_vue",
   "version": "0.0.0",
-  "description": "vue sg library",
-  "main": "lib/sg_vue.umd.min.js",
-  "unpkg": "lib/sg_vue.umd.min.js",
+  "description": "vue e library",
+  "main": "lib/e_vue.umd.min.js",
+  "unpkg": "lib/e_vue.umd.min.js",
   "directories": {
     "doc": "docs",
     "example": "examples",
@@ -64,6 +64,6 @@
     "last 2 versions",
     "not dead"
   ],
-  "author": "wsgw <i@wsgw.com>",
+  "author": "wew <i@wew.com>",
   "license": "MIT"
 }

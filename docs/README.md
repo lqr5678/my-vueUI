@@ -1,20 +1,20 @@
-##### sg-input
+##### e-input输入框
 
-<vuep template="#sgInput"></vuep>
+<vuep template="#eInput"></vuep>
 
-<script v-pre type="text/x-template" id="sgInput">
+<script v-pre type="text/x-template" id="eInput">
 <template>
 <div>
 
     <el-form ref="refForm" :model="inputForm">
       <!-- 不检验 -->
-      <sg-input v-model="inputForm.sginput" sgcc-input-type="contactName"></sg-input>
+      <e-input v-model="inputForm.eInput" check-type="contactName"></e-input>
       <!-- 内置校验类型 姓名 -->
-      <sg-input v-model="inputForm.sginput1" prop="sginput1" sgcc-input-type="contactName"></sg-input>
+      <e-input v-model="inputForm.eInput1" prop="eInput1" check-type="contactName"></e-input>
       <!-- 自定义校验只校验不为空 -->
-      <sg-input v-model="inputForm.sginput2" prop="sginput2" sgcc-input-type="contactName" custom="姓名"></sg-input>
+      <e-input v-model="inputForm.eInput2" prop="eInput2" check-type="contactName" custom="姓名"></e-input>
       <!-- 自定义校验 -->
-      <sg-input v-model="inputForm.sginput3" prop="sginput3" sgcc-input-type="sgcustom" :custom="made" sgcc-lable-name="验证码:"></sg-input>
+      <e-input v-model="inputForm.eInput3" prop="eInput3" check-type="ecustom" :custom="made" lable-name="验证码:"></e-input>
     </el-form>
     <button @click="submit">校验</button>
     <button @click="resetForm">重置</button>
@@ -25,14 +25,13 @@
 
 <script>
  module.exports = {
-
     data() {
       return {
         inputForm: {
-            sginput: "",
-            sginput1:"",
-            sginput2:"",
-            sginput3:""
+            eInput: "",
+            eInput1:"",
+            eInput2:"",
+            eInput3:""
         },
         made: {
             uetest: /^\d{6}$/,
@@ -72,23 +71,22 @@
 | 参数           | 说明                                                         | 类型          | 默认值            |
 | -------------- | ------------------------------------------------------------ | ------------- | ----------------- |
 | labelWidth     | 表单域标签的宽度，例如 '50px'。作为 Form 直接子元素的 form-item 会继承该值。支持 `auto` 。 | string        | —                 |
-| sginputBehind  | 输入框后面的追加的文字 -如果传就显示如果不传就不显示 (kvw)   | string        | —                 |
+| maxlength | 文本域可输入字符的最大长度 | Number/String | 50 |
+| inputBehind  | 输入框后面的追加的文字 -如果传就显示如果不传就不显示 (kvw)   | string        | —                 |
 | isRequired     | 是否必填                                                     | boolean       | false             |
 | ishideAsterisk | 是否显示必填字段的标签旁边的红色星号                         | boolean       | false             |
-| sgccLableName  | label，如果不传就不显示                                      | string        | —                 |
-| sgType         | 输入框类型 原生属性                                          | string        | input             |
-| sgplaceHolder  | 占位符                                                       | String        | —                 |
-| isinlineMsg    | 错误校验 是否以行内形式展示                                  | boolean       | true              |
+| LableName  | label，如果不传就不显示                                      | string        | —                 |
+| type         | 输入框类型 原生属性                                          | string        | input             |
+| ePlaceHolder  | 占位符                                                       | String        | —                 |
+| isinline    | 错误校验 是否以行内形式展示                                  | boolean       | true              |
 | isWarnMsg      | 是否显示提示说明                                             | boolean       | false             |
 | isWarnMsgtext  | 提示说明文字                                                 | String        | —                 |
-| sgccTextAlign  | 对齐方式  right 右 left 左                                   | String        | right             |
+| textAlign  | 对齐方式  right 右 left 左                                   | String        | right             |
 | isshowMeg      | 是否显示校验错误信息                                         | boolean       | true              |
-| sgError        | 表单验证错误信息, 设置该值会使表单验证状态变为error，并显示该错误信息 | String        | —                 |
-| sgccInputType  | 校验类型（封装的正则）                                       | String        | —                 |
+| errorTxt        | 表单验证错误信息, 设置该值会使表单验证状态变为error，并显示该错误信息 | String        | —                 |
+| checkType  | 校验类型（封装的正则）                                       | String        | —                 |
 | custom         | 自定义校验(如果只校验不为空只传提示文字), (如果校验正则传对象-正则字段**uetest**和提示**hintErr**字段)) | String/object | —/(uetes/hintErr) |
-| sgError        | 表单验证错误信息, 设置该值会使表单验证状态变为error，并显示该错误信息 | String        | —                 |
 | custNoType     | 身份证军人证户口本类型                                       | String/Number | —                 |
-|                |                                                              |               |                   |
 
 ###### Option Attributes
 
@@ -97,8 +95,7 @@
 | value | 选项的值                                                     | string/number/object | —      |
 | prop  | 表单域 model 字段，在使用 validate、resetFields 方法的情况下，该属性是必填的 | string               | —      |
 
-## sg-radio
-sg-radio组件是一个单选框组件
+## e-radio单选框
 
 <vuep template="#radio"></vuep>
 
@@ -106,10 +103,10 @@ sg-radio组件是一个单选框组件
 <template>
   <div>
     <el-form ref="form" :model="form" :rules="rules">
-      <sg-radio v-model="form.radio1" :options="radioArr1"></sg-radio>
-      <sg-radio label="是否产权/户主变更" :label-width="labelWidth" label-position="left" :options="radioArr2" v-model="form.radio2" mark
-      @change="change"></sg-radio>
-      <sg-radio label="用电性质" :label-width="labelWidth" :options="radioArr3" v-model="form.radio3" prop="radio3" mark="我是提示文字"></sg-radio>
+      <e-radio v-model="form.radio1" :options="radioArr1"></e-radio>
+      <e-radio label="是否产权/户主变更" :label-width="labelWidth" label-position="left" :options="radioArr2" v-model="form.radio2" mark
+      @change="change"></e-radio>
+      <e-radio label="用电性质" :label-width="labelWidth" :options="radioArr3" v-model="form.radio3" prop="radio3" mark="我是提示文字"></e-radio>
       <el-button @click="submit" type="primary" style="margin-left: 40px;">提交</el-button>
     </el-form>
   </div>
@@ -204,7 +201,7 @@ sg-radio组件是一个单选框组件
 | :------- | :--------------------- | :-------------------- |
 | change   | 绑定值变化时触发的事件 | 选中的 Radio label 值 |
 
-## sg-date
+## e-date日期
 
 <vuep template="#date"></vuep>
 
@@ -212,13 +209,13 @@ sg-radio组件是一个单选框组件
 <template>
 	<div>
     <el-form ref="form" :model="form" :rules="rules">
-      <sg-date start-date="2020-05" end-date="2020-10" format="yyyy/MM" type="month" v-model="form.date1"></sg-date>
-      <sg-date label="时间" :label-width="labelWidth" start-date="2020/05" size="mini" format="yyyy/MM" type="month" v-model="form.date2"
+      <e-date start-date="2020-05" end-date="2020-10" format="yyyy/MM" type="month" v-model="form.date1"></e-date>
+      <e-date label="时间" :label-width="labelWidth" start-date="2020/05" size="mini" format="yyyy/MM" type="month" v-model="form.date2"
       @focus="focus" @blur="blur" @change="change">
-      </sg-date>
-      <sg-date label="开始时间" :label-width="labelWidth" start-date="2020-11-01" end-date="2020-12-28" size="small" v-model="form.date3" placeholder="请选择开始时间" required></sg-date>
-      <sg-date label="结束时间" :label-width="labelWidth" start-date="2020-11-01" end-date="2020-12-28" size="small" mark="我是提示文字" v-model="form.date4" placeholder="请选择结束时间"
-      prop="date4"></sg-date>
+      </e-date>
+      <e-date label="开始时间" :label-width="labelWidth" start-date="2020-11-01" end-date="2020-12-28" size="small" v-model="form.date3" placeholder="请选择开始时间" required></e-date>
+      <e-date label="结束时间" :label-width="labelWidth" start-date="2020-11-01" end-date="2020-12-28" size="small" mark="我是提示文字" v-model="form.date4" placeholder="请选择结束时间"
+      prop="date4"></e-date>
       <el-button @click="submit" type="primary" style="margin-left: 40px;">提交</el-button>
     <el-form>
   </div>
@@ -291,21 +288,21 @@ sg-radio组件是一个单选框组件
 | focus    | 当 input 获得焦点时触发 | 组件实例                                               |
 
 
-##### sg-select
-<vuep template="#SgSelect"></vuep>
+##### e-select下拉框
+<vuep template="#eSelect"></vuep>
 
-<script v-pre type="text/x-template" id="SgSelect">
+<script v-pre type="text/x-template" id="eSelect">
 <template>
 <div>
     <el-form :model="elform" ref="elform" :rules="rules">
-      <sg-select ref="sgSelect" :optionArr="optionArr" :filterable='true' v-model="elform.region" select-label="daskdjapodjaposjd" prop='region' @selchange='elform.region = $event'></sg-select>
-      <sg-select ref="sgSelect" :optionArr="optionArr" v-model="elform.region" prop='region3' @selchange='elform.region3 = $event'></sg-select>
-      <sg-select ref="sgSelect2" :optionArr="optionArr" v-model="elform.region2" select-label="大大大" prop='region2' @selchange='elform.region2 = $event'>
+      <e-select :optionArr="optionArr" :filterable='true' v-model="elform.region" select-label="one" prop='region' @selchange='elform.region = $event'></e-select>
+      <e-select :optionArr="optionArr" v-model="elform.region" prop='region3' @selchange='elform.region3 = $event'></e-select>
+      <e-select :optionArr="optionArr" v-model="elform.region2" select-label="three" prop='region2' @selchange='elform.region2 = $event'>
         <div slot="select" slot-scope="item">
           {{item}}
           <i style="margin-right:20px;">{{item.data.label}}</i>
         </div> 
-      </sg-select>
+      </e-select>
     </el-form>
     <button @click="text">校验</button>
 </div>
@@ -393,16 +390,16 @@ sg-radio组件是一个单选框组件
 | key     | 编码值                                    | string/number        | —      |
 | is-flag | 是否默认显示                              | Boolean              | false  |
 
-##### sg-upload
+##### e-upload上传
 
-<vuep template="#SgUpload"></vuep>
+<vuep template="#eUpload"></vuep>
 
-<script v-pre type="text/x-template" id="SgUpload">
+<script v-pre type="text/x-template" id="eUpload">
 <template>
   <div>
 
     <el-form>
-      <sg-upload></sg-upload>
+      <e-upload></e-upload>
     </el-form>
 
   </div>
@@ -446,12 +443,12 @@ sg-radio组件是一个单选框组件
 | --------- | ------------ | ---- |
 | send_Data | 传出图片数据 | —    |
 
-## sgUploadId上传身份证
-<vuep template="#sgUploadId"></vuep>
-<script v-pre type="text/x-template" id="sgUploadId">
+## eUploadId上传身份证
+<vuep template="#eUploadId"></vuep>
+<script v-pre type="text/x-template" id="eUploadId">
 <template>
   <div>
-    <sg-upload-id :empty='empty' :is-remove='isRemove'></sg-upload-id>
+    <e-upload-id :empty='empty' :is-remove='isRemove'></e-upload-id>
     <button @click="isRemoveFn">上传失败</button>
     <button @click="isEmptyFn">清空</button>
   </div>
@@ -503,16 +500,16 @@ sg-radio组件是一个单选框组件
 
 
 
-## sgEquipment下拉表格
+## eEquipment下拉表格
 
-<vuep template="#sgEquipment"></vuep>
+<vuep template="#eEquipment"></vuep>
 
-<script v-pre type="text/x-template" id="sgEquipment">
+<script v-pre type="text/x-template" id="eEquipment">
 <template>
   <div>
     <el-form :model="ruleForm" :rules="rules" ref="ruleForm" inline-message>
-      <sg-equipment
-        :table-data="equipList"
+      <e-equipment
+        :table-data="dataList"
         :ischg-trans="ischgTrans"
         prop="chosen_capacity"
         v-model="ruleForm.chosen_capacity"
@@ -520,7 +517,7 @@ sg-radio组件是一个单选框组件
       >
         <!-- 表格标题 -->
         <template slot="title">
-          <p slot="title">当前暂停设备{{ equipList.length }}台， 总容量 {{ total_capacity }}kVA。
+          <p slot="title">当前暂停设备{{ dataList.length }}台， 总容量 {{ total_capacity }}kVA。
               已选择启用设备 {{ chosen_station }}台， 启用设备总容量
               {{ ruleForm.chosen_capacity }}kVA</p>
         </template>
@@ -528,29 +525,27 @@ sg-radio组件是一个单选框组件
         <!-- 表格内容 -->
         <template slot="tableInfo">
           <el-table-column type="selection" label width="32"></el-table-column>
-          <el-table-column prop="tranName" label>
+          <el-table-column prop="name" label>
             <template slot-scope="scope">
                 <p>
                   <span class="tranClass textOverflow">{{
-                    scope.row.tranName
+                    scope.row.name
                   }}</span>
                   <span class="tranClass2 textOverflow"
-                    >设备编号:{{ scope.row.equipId }}</span
+                    >设备编号:{{ scope.row.Id }}</span
                   >
                   <span
-                    >设备容量:{{
-                      scope.row.plateCap || scope.row.newEquipCap
-                    }}&nbsp;kVA</span
+                    >设备容量:{{ scope.row.number }}&nbsp;kVA</span
                   >
                 </p>
               </template>
           </el-table-column>
         </template>
-      </sg-equipment>
+      </e-equipment>
     
-      <h2 @click="handleChgTrans()">
+      <button @click.prevent="handleChgTrans()">
         转换模式
-      </h2>
+      </button>
     </el-form>
   </div>
 </template>
@@ -566,43 +561,31 @@ sg-radio组件是一个单选框组件
         },
         ischgTrans: '1',
         isRemove: false, // 是否删除
-        equipList: [
+        dataList: [
           {
-            "equipId": "10000157637",
-            "plateCap": "101",
-            "tranName": "死数据1",
-            "sndsideVoltCode": "AC03802",
-            "powersourceNo": "5600774166",
-            "frstsideVoltCode": "AC00101",
-            "actualStopUseDate": "2016-02-01",
-            "runStatusCode": "02",
-            "planResumeDate": "2016-07-31"
+            "Id": "10000157637",
+            "number": "101",
+            "name": "死数据1",
           },
           {
-            "equipId": "10000157637",
-            "plateCap": "202",
-            "tranName": "死数据2",
-            "sndsideVoltCode": "AC03802",
-            "powersourceNo": "5600774166",
-            "frstsideVoltCode": "AC00101",
-            "actualStopUseDate": "2016-02-01",
-            "runStatusCode": "02",
-            "planResumeDate": "2016-07-31"
+            "Id": "10000157637",
+            "number": "202",
+            "name": "死数据2",
           }
         ],
         ruleForm: {
           chosen_capacity: '',
         },
         chosen_station: 0, //  已启动设备台数
-        equipListsAct: [], // 选中的设备数据集列表
+        dataListAct: [], // 选中的设备数据集列表
       }
     },
     computed:{
       // 所有设备总容量
       total_capacity(){
         var num = 0
-        this.equipList.forEach(item => {
-          num += Number(item.plateCap)
+        this.dataList.forEach(item => {
+          num += Number(item.number)
         })
         return num
       }
@@ -633,17 +616,17 @@ sg-radio组件是一个单选框组件
         // 已启用设备总容量
         val.forEach((item, i) => {
           // 加上已勾选的设备容量并转为数字类型
-          this.ruleForm.chosen_capacity += parseFloat(item.plateCap || item.newEquipCap);
+          this.ruleForm.chosen_capacity += parseFloat(item.number);
           // 转化为数字类型
           this.ruleForm.chosen_capacity = parseFloat(this.ruleForm.chosen_capacity)
         });
     
-        this.equipListsAct = val
+        this.dataListAct = val
       },
     }
   }
 </script>
-<style scoped>
+<!-- <style scoped>
 /* 文字单行溢出 */
 .textOverflow {
   overflow: hidden;
@@ -661,7 +644,7 @@ sg-radio组件是一个单选框组件
   width: 230px;
   margin-right: 10px;
 }
-</style>
+</style> -->
 
 ### Attributes
 
@@ -677,4 +660,3 @@ sg-radio组件是一个单选框组件
 | 事件名称              | 说明                 | 类型  |
 | :-------------------- | :------------------- | :---- |
 | handleSelectionChange | 将选中的设备发送出来 | Array |
-
