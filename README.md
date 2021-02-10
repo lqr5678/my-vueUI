@@ -1,4 +1,41 @@
-# @guoqzuo/vue-chart
+# 1本项目：
+## docs
+
+```bash
+
+# 运行
+docsify serve ./EUI
+
+# 打包
+npm run build:lib 
+
+```
+## 在线项目预览：
+
+https://lqr5678.github.io/EUI/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# 2教程：
+# 基于@guoqzuo/vue-chart
 
 基于 Vue 2.x 组件库，用于测试怎么写一个 Vue 组件库，并为该组件库做一个类似 ElemnetUI 官网的文档。
 
@@ -122,8 +159,6 @@ vue create vue-chart-examples
 ? Save this as a preset for future projects? (y/N) n
 ```
 
-## docs
-
 ```bash
 # 全局安装 docsify-cli
 sudo npm i docsify-cli -g
@@ -135,8 +170,6 @@ docsify init ./docs
 docsify serve ./docs
 # Serving /Users/guoqzuo/Desktop/gitclone/vue-chart/docs now.
 # Listening at http://localhost:3000
+
 ```
 
-
-
-打包：npm run build:lib 
