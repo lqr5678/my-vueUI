@@ -1,9 +1,9 @@
 {
-  "name": "@wew/e_vue",
+  "name": "@wew/EUI",
   "version": "0.0.0",
   "description": "vue e library",
-  "main": "lib/e_vue.umd.min.js",
-  "unpkg": "lib/e_vue.umd.min.js",
+  "main": "lib/EUI.umd.min.js",
+  "unpkg": "lib/EUI.umd.min.js",
   "directories": {
     "doc": "docs",
     "example": "examples",

@@ -1,30 +1,30 @@
 <template>
   <div>
-    <el-form-item :label="capacity_label" class="clearfix parBox" :prop="prop">
+    <el-form-item :label="capacityLabel" class="clearfix parBox" :prop="prop">
       <div class="divBox">
         <!-- 减容恢复的 -->
         <el-input
           maxlength="10"
-          v-if="ischgTrans == '1'"
+          v-if="pattern == '1'"
           placeholder="请输入"
           v-model.number="chosen_capacity"
-          :disabled="isChosen_disabled"
+          :disabled="chosenDisabled"
         ></el-input>
         <!-- 暂停恢复的 -->
         <el-input
-          v-if="ischgTrans == '0'"
+          v-if="pattern == '0'"
           placeholder="请选择"
           readonly
           @click.native="isDisplayTable = !isDisplayTable"
           v-model="chosen_capacity"
         ></el-input>
         <i
-          v-show="!isDisplayTable && ischgTrans == '0'"
+          v-show="!isDisplayTable && pattern == '0'"
           class="inputDown"
           @click="isDisplayTable = !isDisplayTable"
         ></i>
         <i
-          v-show="isDisplayTable && ischgTrans == '0'"
+          v-show="isDisplayTable && pattern == '0'"
           class="inputUp"
           @click="isDisplayTable = !isDisplayTable"
         ></i>
@@ -35,7 +35,7 @@
         <div
           class="tableTitle"
           v-show="isDisplayTable"
-          v-if="ischgTrans == '0'"
+          v-if="pattern == '0'"
         >
 				  <slot name='title'></slot>
           <el-table
@@ -68,17 +68,17 @@ export default {
       default: () => ([])
     },
     // 减容恢复容量默认与可恢复容量相同，用户不可更改(目前上海减容恢复是这样)
-    isChosen_disabled: {
+    chosenDisabled: {
       type: Boolean,
       default: false
     },
     // lable名
-    capacity_label: {
+    capacityLabel: {
       type: String,
       default: '申请恢复容量:'
     },
     // 模式， 1选中设备，2手动输入
-    ischgTrans: {
+    pattern: {
       type: String,
       default: "1"
     }
@@ -97,7 +97,7 @@ export default {
 			}
 		},
 
-    'ischgTrans': {
+    'pattern': {
       handler(newVal, oldVal) {
         console.log(newVal, 'newVal')
       }

@@ -5,7 +5,7 @@
  * @LastEditors: Seven
  */
 /* 自定义校验规则 */
-export function ecustom(rule, value, callback,erule) {
+export function custom(rule, value, callback,erule) {
   console.log(typeof erule)
   let setrule = {
     hintErr : "",

@@ -7,9 +7,10 @@
 <template>
   <div class="e-form">
     <el-form-item
+      :label-width="labelWidth"
       :inline-message="isinline"
       :prop="isRequired ? prop : ''"
-      :label="LableName"
+      :label="lableName"
       :label-position="textAlign"
       :hide-required-asterisk="ishideAsterisk"
       :error="errorTxt"
@@ -62,7 +63,7 @@ import {
   consName,
   telNo,
   bgnDate,
-  ecustom,
+  custom,
 } from "./js/e-validata";
 
 export default {
@@ -75,7 +76,7 @@ export default {
      * @param {inputBehind}  输入框后面的追加的文字 -如果传就显示如果不传就不显示 (kvw)
      * @param {isRequired} 是否必填
      * @param {ishideAsterisk} 是否显示必填字段的标签旁边的红色星号
-     * @param {LableName} 如果不传则不显示label,默认不显示labei
+     * @param {lableName} 如果不传则不显示label,默认不显示labei
      * @param {type} 输入框类型 原生属性
      * @param {ePlaceHolder} 占位符
      * @param {maxlength} 文本域可输入字符的最大长度
@@ -83,7 +84,7 @@ export default {
      * @param {isWarnMsg} 提示说明
      * @param {isWarnMsgtext} 提示说明文字
      * @param {textAlign} 默认对齐方式  right 右 left 左 默认居右
-     * @param {isshowMeg} 是否显示校验错误信息
+     * @param {isShowMeg} 是否显示校验错误信息
      * @param {errorTxt} 表单域验证错误信息, 设置该值会使表单验证状态变为error，并显示该错误信息
      * @param {checkType} //校验类型
      * @param {custom} //自定义校验-传过来一个正则字段uetest和提示hintErr字段
@@ -96,7 +97,7 @@ export default {
     value: [String, Number],
     labelWidth: {
       type: String,
-      default: "100px",
+      default: "",
     },
     inputBehind: [String, Number],
     isRequired: {
@@ -107,7 +108,7 @@ export default {
       type: Boolean,
       default: true,
     },
-    LableName: {
+    lableName: {
       type: String,
       default: "你的名字:",
     },
@@ -139,7 +140,7 @@ export default {
       type: String,
       default: "right",
     },
-    isshowMeg: {
+    isShowMeg: {
       type: Boolean,
       default: true,
     },
@@ -179,8 +180,8 @@ export default {
         bgnDate(rule, value, callback); //起征日期
       } else if (this.checkType == "contactName") {
         contactName(rule, value, callback); //姓名
-      } else if (this.checkType == "ecustom") {
-        ecustom(rule, value, callback, this.custom); //自定义校验
+      } else if (this.checkType == "custom") {
+        custom(rule, value, callback, this.custom); //自定义校验
       }else{
         callback();
       }

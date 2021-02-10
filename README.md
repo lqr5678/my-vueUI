@@ -137,3 +137,6 @@ docsify serve ./docs
 # Listening at http://localhost:3000
 ```
 
+
+
+打包：npm run build:lib 

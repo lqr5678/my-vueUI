@@ -1,4 +1,11 @@
-##### e-input输入框
+## 介绍
+
+基于vuep，二次开发elementUI封装成为了自己的组件库。实时编辑并预览。
+
+将自己常用校验规则和属性加进了组件里面，并增加了上传身份证和下拉表格组件。
+
+
+## e-input输入框
 
 <vuep template="#eInput"></vuep>
 
@@ -14,7 +21,7 @@
       <!-- 自定义校验只校验不为空 -->
       <e-input v-model="inputForm.eInput2" prop="eInput2" check-type="contactName" custom="姓名"></e-input>
       <!-- 自定义校验 -->
-      <e-input v-model="inputForm.eInput3" prop="eInput3" check-type="ecustom" :custom="made" lable-name="验证码:"></e-input>
+      <e-input v-model="inputForm.eInput3" prop="eInput3" check-type="custom" :custom="made" lable-name="验证码:"></e-input>
     </el-form>
     <button @click="submit">校验</button>
     <button @click="resetForm">重置</button>
@@ -66,29 +73,29 @@
   }
 </script>
 
-###### 属性值
+### 属性值
 
 | 参数           | 说明                                                         | 类型          | 默认值            |
 | -------------- | ------------------------------------------------------------ | ------------- | ----------------- |
-| labelWidth     | 表单域标签的宽度，例如 '50px'。作为 Form 直接子元素的 form-item 会继承该值。支持 `auto` 。 | string        | —                 |
+| label-width   | 表单域标签的宽度，例如 '50px'。作为 Form 直接子元素的 form-item 会继承该值。支持 `auto` 。 | string        | —                 |
 | maxlength | 文本域可输入字符的最大长度 | Number/String | 50 |
-| inputBehind  | 输入框后面的追加的文字 -如果传就显示如果不传就不显示 (kvw)   | string        | —                 |
-| isRequired     | 是否必填                                                     | boolean       | false             |
-| ishideAsterisk | 是否显示必填字段的标签旁边的红色星号                         | boolean       | false             |
-| LableName  | label，如果不传就不显示                                      | string        | —                 |
+| input-behind | 输入框后面的追加的文字 -如果传就显示如果不传就不显示 (kvw)   | string        | —                 |
+| is-required   | 是否必填                                                     | boolean       | false             |
+| ishide-asterisk | 是否显示必填字段的标签旁边的红色星号                         | boolean       | false             |
+| lable-name | label，如果不传就不显示                                      | string        | —                 |
 | type         | 输入框类型 原生属性                                          | string        | input             |
-| ePlaceHolder  | 占位符                                                       | String        | —                 |
+| e-place-holder | 占位符                                                       | String        | —                 |
 | isinline    | 错误校验 是否以行内形式展示                                  | boolean       | true              |
-| isWarnMsg      | 是否显示提示说明                                             | boolean       | false             |
-| isWarnMsgtext  | 提示说明文字                                                 | String        | —                 |
-| textAlign  | 对齐方式  right 右 left 左                                   | String        | right             |
-| isshowMeg      | 是否显示校验错误信息                                         | boolean       | true              |
-| errorTxt        | 表单验证错误信息, 设置该值会使表单验证状态变为error，并显示该错误信息 | String        | —                 |
-| checkType  | 校验类型（封装的正则）                                       | String        | —                 |
+| is-warn-msg | 是否显示提示说明                                             | boolean       | false             |
+| is-warn-msgtext | 提示说明文字                                                 | String        | —                 |
+| text-align | 对齐方式  right 右 left 左                                   | String        | right             |
+| is-show-meg   | 是否显示校验错误信息                                         | boolean       | true              |
+| error-txt      | 表单验证错误信息, 设置该值会使表单验证状态变为error，并显示该错误信息 | String        | —                 |
+| check-type | 校验类型（封装的正则）                                       | String        | —                 |
 | custom         | 自定义校验(如果只校验不为空只传提示文字), (如果校验正则传对象-正则字段**uetest**和提示**hintErr**字段)) | String/object | —/(uetes/hintErr) |
-| custNoType     | 身份证军人证户口本类型                                       | String/Number | —                 |
+| cust-no-type | 身份证军人证户口本类型                                       | String/Number | —                 |
 
-###### Option Attributes
+### Option Attributes
 
 | 参数  | 说明                                                         | 类型                 | 默认值 |
 | ----- | ------------------------------------------------------------ | -------------------- | ------ |
@@ -104,7 +111,7 @@
   <div>
     <el-form ref="form" :model="form" :rules="rules">
       <e-radio v-model="form.radio1" :options="radioArr1"></e-radio>
-      <e-radio label="是否产权/户主变更" :label-width="labelWidth" label-position="left" :options="radioArr2" v-model="form.radio2" mark
+      <e-radio label="是否" :label-width="labelWidth" label-position="left" :options="radioArr2" v-model="form.radio2" mark
       @change="change"></e-radio>
       <e-radio label="用电性质" :label-width="labelWidth" :options="radioArr3" v-model="form.radio3" prop="radio3" mark="我是提示文字"></e-radio>
       <el-button @click="submit" type="primary" style="margin-left: 40px;">提交</el-button>
@@ -132,12 +139,12 @@
         radioArr2: [
           {
             key: '1',
-            value: '不变更（变更服务）',
+            value: '是',
             isFlag: true,
           },
           {
-            key: '2',
-            value: '变更（过户服务）',
+            key: '0',
+            value: '否',
             isFlag: false
           }
         ],
@@ -200,6 +207,15 @@
 | 事件名称 | 说明                   | 回调参数              |
 | :------- | :--------------------- | :-------------------- |
 | change   | 绑定值变化时触发的事件 | 选中的 Radio label 值 |
+
+### Option Attributes
+
+| 参数    | 说明                                      | 类型                 | 默认值 |
+| ------- | ----------------------------------------- | -------------------- | ------ |
+| value   | 选项的值                                  | string/number/object | —      |
+| label   | 选项的标签，若不设置则默认与 `value` 相同 | string/number        | —      |
+| key     | 编码值                                    | string/number        | —      |
+| is-flag | 是否默认显示                              | Boolean              | false  |
 
 ## e-date日期
 
@@ -267,8 +283,8 @@
 | label-width     | 表单域标签的的宽度，例如 '50px'。支持 `auto`。               | string                                    | —                                                            | —          |
 | value / v-model | 绑定值                                                       | date(DatePicker) / array(DateRangePicker) | —                                                            | —          |
 | type            | 显示类型                                                     | string                                    | year/month/date/dates/ week/datetime/datetimerange/ daterange/monthrange | date       |
-| startDate       | 开始时间                                                     | sting                                     | —                                                            | —          |
-| endDate         | 结束时间                                                     | string                                    | —                                                            | —          |
+| start-date      | 开始时间                                                     | sting                                     | —                                                            | —          |
+| end-date        | 结束时间                                                     | string                                    | —                                                            | —          |
 | format          | 显示在输入框中的格式                                         | string                                    | 见[日期格式](https://element.eleme.cn/#/zh-CN/component/date-picker#ri-qi-ge-shi) | yyyy-MM-dd |
 | placeholder     | 非范围选择时的占位内容                                       | string                                    | —                                                            | —          |
 | required        | 是否必填，如不设置，则会根据校验规则自动生成                 | boolean                                   | —                                                            | false      |
@@ -288,7 +304,7 @@
 | focus    | 当 input 获得焦点时触发 | 组件实例                                               |
 
 
-##### e-select下拉框
+## e-select下拉框
 <vuep template="#eSelect"></vuep>
 
 <script v-pre type="text/x-template" id="eSelect">
@@ -345,24 +361,22 @@
     methods: {
       text() {
         this.$refs["elform"].validate((valid,object)=> {
-          console.log(object);
-          if (!valid) {console.log('object');
-            this.$nextTick(() => {
-              var isError= document.getElementsByClassName("is-error");
-              console.log(isError);
-              isError[0].querySelector('input').focus();
-            })
+          if (!valid) {console.log('未通过校验');
+            // this.$nextTick(() => {
+            //   var isError= document.getElementsByClassName("is-error");
+            //   console.log(isError);
+            //   isError[0].querySelector('input').focus();
+            // })
             return
           }else {console.log(this.elform)}
         })
-        // console.log(this.elform)
       }
     }
 
   }
 </script>
 
-###### 属性值
+### Attributes属性值
 
 | 参数         | 说明                                                         | 类型    | 默认值 |
 | ------------ | ------------------------------------------------------------ | ------- | ------ |
@@ -375,22 +389,14 @@
 | prop         | 定义校验的参数                                               | String  | —      |
 | label-width  | 表单域标签的宽度，例如 '50px'。作为 Form 直接子元素的 form-item 会继承该值。支持 `auto` 。 | string  | —      |
 
-###### 事件
+### Events事件
 
 | 事件名称  | 说明                               | 回调参数     |
 | --------- | ---------------------------------- | ------------ |
 | selchange | 接受选中的值(选中值发生变化时触发) | 目前的选中值 |
 
-###### Option Attributes
 
-| 参数    | 说明                                      | 类型                 | 默认值 |
-| ------- | ----------------------------------------- | -------------------- | ------ |
-| value   | 选项的值                                  | string/number/object | —      |
-| label   | 选项的标签，若不设置则默认与 `value` 相同 | string/number        | —      |
-| key     | 编码值                                    | string/number        | —      |
-| is-flag | 是否默认显示                              | Boolean              | false  |
-
-##### e-upload上传
+## e-upload上传
 
 <vuep template="#eUpload"></vuep>
 
@@ -419,7 +425,7 @@
 
 ###### 
 
-###### Attribute
+### Attribute
 
 | 参数         | 说明                           | 类型    | 默认值       |
 | ------------ | ------------------------------ | ------- | ------------ |
@@ -437,7 +443,7 @@
 | prop         | 定义校验的参数                 | string  | —            |
 | label-width  | label宽度                      | string  | —            |
 
-###### Methods
+### Methods
 
 | 方法名    | 说明         | 参数 |
 | --------- | ------------ | ---- |
@@ -483,14 +489,14 @@
 
 ### Attributes
 
-| 参数     | 说明           | 类型    | 可选值 | 默认值                             |
-| :------- | :------------- | :------ | :----- | :--------------------------------- |
-| empty    | 清空所有       | Boolean | —      | false                              |
-| isRemove | 上传失败       | Boolean | —      | false                              |
-| ext      | 限制文件格式   | String  |        | .jpg,.png,.jpeg                    |
-| maxSize  | 限制图片最大kb | Number  |        | 1204                               |
-| frontImg | 身份证正面图   | base64  |        | data:image/png;base64,iVBORw0KG... |
-| backImg  | 身份证背面图   | base64  |        | data:image/png;base64,iVBORw0KG... |
+| 参数      | 说明           | 类型    | 可选值 | 默认值                             |
+| :-------- | :------------- | :------ | :----- | :--------------------------------- |
+| empty     | 清空所有       | Boolean | —      | false                              |
+| is-remove | 上传失败       | Boolean | —      | false                              |
+| ext       | 限制文件格式   | String  |        | .jpg,.png,.jpeg                    |
+| max-size  | 限制图片最大kb | Number  |        | 1204                               |
+| front-img | 身份证正面图   | base64  |        | data:image/png;base64,iVBORw0KG... |
+| back-img  | 身份证背面图   | base64  |        | data:image/png;base64,iVBORw0KG... |
 
 ### Events
 
@@ -510,7 +516,7 @@
     <el-form :model="ruleForm" :rules="rules" ref="ruleForm" inline-message>
       <e-equipment
         :table-data="dataList"
-        :ischg-trans="ischgTrans"
+        :ischg-trans="pattern"
         prop="chosen_capacity"
         v-model="ruleForm.chosen_capacity"
         @handle-selection-change='handleSelectionChange'
@@ -559,7 +565,7 @@
             { required: true, message: '请输入容量', trigger: ['blur', 'change'] },
           ]
         },
-        ischgTrans: '1',
+        pattern: '1',
         isRemove: false, // 是否删除
         dataList: [
           {
@@ -600,7 +606,7 @@
     methods: {
       handleChgTrans(){
         console.log('转换')
-        this.ischgTrans = this.ischgTrans == '1' ? '0' : '1'
+        this.pattern = this.pattern == '1' ? '0' : '1'
         // 重新输入申请恢复容量
         this.ruleForm.chosen_capacity = ''
         // 已启动设备数
@@ -648,12 +654,12 @@
 
 ### Attributes
 
-| 参数              | 说明                        | 类型    | 可选值 | 默认值        |
-| :---------------- | :-------------------------- | :------ | :----- | :------------ |
-| tableData         | 表格数据                    | Array   | —      | []            |
-| capacity_label    | lable名                     | String  | —      | 申请恢复容量: |
-| ischgTrans        | 模式， 1选中设备，2手动输入 | String  |        | 1             |
-| isChosen_disabled | 不可更改（只读）            | Boolean |        | false         |
+| 参数            | 说明                        | 类型    | 可选值 | 默认值        |
+| :-------------- | :-------------------------- | :------ | :----- | :------------ |
+| table-data      | 表格数据                    | Array   | —      | []            |
+| capacity-label  | lable名                     | String  | —      | 申请恢复容量: |
+| pattern         | 模式， 1选中设备，2手动输入 | String  |        | 1             |
+| chosen-disabled | 不可更改（只读）            | Boolean |        | false         |
 
 ### Events
 
