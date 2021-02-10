@@ -171,5 +171,8 @@ docsify serve ./docs
 # Serving /Users/guoqzuo/Desktop/gitclone/vue-chart/docs now.
 # Listening at http://localhost:3000
 
+# 打包
+npm run build:lib 
+
 ```
 
