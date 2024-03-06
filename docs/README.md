@@ -37,7 +37,7 @@ module.exports = {
         eInput2: "",
         eInput3: "",
       },
-      made: {
+      verifyCode: {
         uetest: /^\d{6}$/,
         hintErr: "验证码",
       },
