@@ -20,7 +20,7 @@
       <!-- 自定义校验只校验不为空 -->
       <e-input v-model="inputForm.eInput2" prop="eInput2" check-type="contactName" custom="姓名"></e-input>
       <!-- 自定义校验 -->
-      <e-input v-model="inputForm.eInput3" prop="eInput3" check-type="custom" :custom="made" lable-name="验证码:"></e-input>
+      <e-input v-model="inputForm.eInput3" prop="eInput3" check-type="custom" :custom="verifyCode" lable-name="验证码:"></e-input>
     </el-form>
     <button @click="submit">校验</button>
     <button @click="resetForm">重置</button>
