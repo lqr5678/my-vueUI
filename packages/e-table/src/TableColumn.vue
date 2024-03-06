@@ -55,7 +55,7 @@
       </div>
       <span v-else>
         <!-- 除0外，其他空值(null、undefined)转为'--'-->
-        <!-- 这里babelrc版本低暂时不能解析 -->
+        <!-- 这里Babel版本低暂时不能解析 -->
         <!-- {{ scope.row[itemCol.prop] === '' ? '--' : scope.row[itemCol.prop] ?? '--' }} -->
         {{ scope.row[itemCol.prop] === '' ? '--' : scope.row[itemCol.prop] }}
       </span>
@@ -74,7 +74,7 @@ export default {
   methods: {
     // 需要遍历查找的-获取label
     toLabel(option = [], val, value = 'value', label = 'label') {
-      // 这里babelrc版本低暂时不能解析
+      // 这里Babel版本低暂时不能解析
       // let labelName = option.find((item) => item[value] == val)?.[label];
       // return labelName === "" ? "--" : labelName ?? "--";
 
