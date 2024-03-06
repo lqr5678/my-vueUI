@@ -832,4 +832,4 @@ module.exports = {
 | isHide | 是否隐藏该操作按钮                                      | boolean        | false                 |
 | popover | 操作按钮是否进行提示（比如点击删除按钮弹出是否确认），该功能组件已实现且在其他地方测试通过，该文档疑似版本有问题，参数待生效 | boolean | false |
 | content | popover为true时，操作按钮是否进行提示的文字 | boolean | false |
-| 更多请看示例和表格组件源码
+| 更多请看示例和表格组件源码 | https://github.com/lqr5678/EUI/tree/lqr/packages/e-table/src
