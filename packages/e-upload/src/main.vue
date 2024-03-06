@@ -27,7 +27,7 @@
         </el-upload>
       </div>
       <el-dialog :visible.sync="templateImgDialog" class="diaold">
-        <img :src="parkingUrl" alt />
+        <img :src="parkingUrl" alt style="width: 500px;height: 500px;"/>
       </el-dialog>
     </el-form-item>
   </div>
@@ -77,7 +77,7 @@ export default {
     // 参考模板图片--默认是充电桩参考模板
     parkingUrl: {
       type: String,
-      default: ""
+      default: "https://file1.renrendoc.com/fileroot_temp2/2020-11/25/a8378499-67e7-4c20-ac51-6d42dc222af4/a8378499-67e7-4c20-ac51-6d42dc222af41.gif"
       //   default:require('@/assets/img/syt.jpg')
     },
     // 限制提示语

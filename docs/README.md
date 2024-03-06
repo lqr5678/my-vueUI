@@ -1,8 +1,8 @@
 ## 介绍
 
-基于vuep，二次开发elementUI封装成为了自己的组件库。实时编辑并预览。
+二次开发elementUI封装成为了自己的组件库。实时编辑并预览。
 
-将自己常用校验规则和属性加进了组件里面，并增加了上传身份证和下拉表格组件。
+将常用校验规则和属性加进了组件里面，并增加了上传身份证和下拉表格组件。
 
 
 ## e-input输入框
@@ -11,8 +11,7 @@
 
 <script v-pre type="text/x-template" id="eInput">
 <template>
-<div>
-
+  <div>
     <el-form ref="refForm" :model="inputForm">
       <!-- 不检验 -->
       <e-input v-model="inputForm.eInput" check-type="contactName"></e-input>
@@ -25,52 +24,50 @@
     </el-form>
     <button @click="submit">校验</button>
     <button @click="resetForm">重置</button>
-
-</div>
-
+  </div>
 </template>
 
 <script>
- module.exports = {
-    data() {
-      return {
-        inputForm: {
-            eInput: "",
-            eInput1:"",
-            eInput2:"",
-            eInput3:""
-        },
-        made: {
-            uetest: /^\d{6}$/,
-            hintErr: "验证码",
-        },
-      }
-    },
-    methods: {
-       resetForm() {
-        this.$refs["refForm"].resetFields();
+module.exports = {
+  data() {
+    return {
+      inputForm: {
+        eInput: "",
+        eInput1: "",
+        eInput2: "",
+        eInput3: "",
       },
-      submit() {
-          this.$refs["refForm"].validate((valid,object)=> {
-          console.log(object,valid);
-          if (!valid) {
-              this.$message.error('校验错误');
-              this.$nextTick(() => {
-                  var isError= document.getElementsByClassName("is-error");
-                  console.log(isError);
-                  isError[0].querySelector('input').focus();
-              })
-              return
-          }else {
-            this.$message({
-              message: '校验成功',
-              type: 'success'
-            })}
-          })
-      }
-    }
-
-  }
+      made: {
+        uetest: /^\d{6}$/,
+        hintErr: "验证码",
+      },
+    };
+  },
+  methods: {
+    resetForm() {
+      this.$refs["refForm"].resetFields();
+    },
+    submit() {
+      this.$refs["refForm"].validate((valid, object) => {
+        console.log(object, valid);
+        if (!valid) {
+          this.$message.error("校验错误");
+          this.$nextTick(() => {
+            var isError = document.getElementsByClassName("is-error");
+            console.log(isError);
+            isError[0].querySelector("input").focus();
+          });
+          return;
+        } else {
+          this.$message({
+            message: "校验成功",
+            type: "success",
+          });
+        }
+      });
+    },
+  },
+};
 </script>
 
 ### 属性值
@@ -103,90 +100,101 @@
 | prop  | 表单域 model 字段，在使用 validate、resetFields 方法的情况下，该属性是必填的 | string               | —      |
 
 ## e-radio单选框
-
 <vuep template="#radio"></vuep>
 
 <script v-pre type="text/x-template" id="radio">
 <template>
   <div>
     <el-form ref="form" :model="form" :rules="rules">
-      <e-radio v-model="form.radio1" :options="radioArr1"></e-radio>
-      <e-radio label="是否" :label-width="labelWidth" label-position="left" :options="radioArr2" v-model="form.radio2" mark
-      @change="change"></e-radio>
-      <e-radio label="用电性质" :label-width="labelWidth" :options="radioArr3" v-model="form.radio3" prop="radio3" mark="我是提示文字"></e-radio>
-      <el-button @click="submit" type="primary" style="margin-left: 40px;">提交</el-button>
+      <e-radio
+        label="选项"
+        :label-width="labelWidth"
+        label-position="left"
+        v-model="form.radio1"
+        :options="radioArr1"
+      ></e-radio>
+      <e-radio
+        label="是否"
+        :label-width="labelWidth"
+        label-position="left"
+        :options="radioArr2"
+        v-model="form.radio2"
+        mark="我是提示文字1"
+        @change="change"
+      ></e-radio>
+      <e-radio
+        label="用电性质"
+        :label-width="labelWidth"
+        :options="radioArr3"
+        v-model="form.radio3"
+        prop="radio3"
+        mark="我是提示文字2"
+      ></e-radio>
+      <el-button @click="submit" type="primary">提交</el-button>
     </el-form>
   </div>
 </template>
 
 <script>
  module.exports = {
-    data() {
-      return {
-        labelWidth: '160px',
-        radioArr1: [
-          {
-            key: '1',
-            value: '没有label',
-            isFlag: false
-          },
-          {
-            key: '2',
-            value: '没有label(默认被选中)',
-            isFlag: true
-          }
-        ],
-        radioArr2: [
-          {
-            key: '1',
-            value: '是',
-            isFlag: true,
-          },
-          {
-            key: '0',
-            value: '否',
-            isFlag: false
-          }
-        ],
-        radioArr3: [
-          {
-            key: '1',
-            value: '个人',
-            isFlag: false
-          },
-          {
-            key: '2',
-            value: '企业',
-            isFlag: false
-          }
-        ],
-        form: {
-          radio1: '2',
-          radio2: '1',
-          radio3: '',
+  data() {
+    return {
+      labelWidth: '160px',
+      radioArr1: [
+        {
+          key: '1',
+          value: '选项一',
         },
-        rules: {
-          radio3: [{required: true, message: '请选择用电性质', trigger: ['blur', 'change']}],
+        {
+          key: '2',
+          value: '选项二',
         }
-      }
-    },
-    methods: {
-      //提交
-      submit(){
-        console.log(this.form);
-        this.$refs.form.validate((valid, object) => {
-          console.log(valid);
-          console.log(object);
-        });
+      ],
+      radioArr2: [
+        {
+          key: '1',
+          value: '是',
+        },
+        {
+          key: '0',
+          value: '否',
+        }
+      ],
+      radioArr3: [
+        {
+          key: '1',
+          value: '个人',
+        },
+        {
+          key: '2',
+          value: '企业',
+        }
+      ],
+      form: {
+        radio1: '2',
+        radio2: '1',
+        radio3: '',
       },
-      change(){
-        console.log('change');
+      rules: {
+        radio3: [{required: true, message: '请选择用电性质', trigger: ['blur', 'change']}],
       }
     }
+  },
+  methods: {
+    //提交
+    submit(){
+      console.log(this.form);
+      this.$refs.form.validate((valid, object) => {
+        console.log(valid);
+        console.log(object);
+      });
+    },
+    change(){
+      console.log('change');
+    }
   }
+}
 </script>
-
-
 
 ### Attributes
 
@@ -195,7 +203,6 @@
 | label           | 标签文本                                                     | string                    | —                                                            | —      |
 | label-width     | 表单域标签的的宽度，例如 '50px'。支持 `auto`。               | string                    | —                                                            | —      |
 | value / v-model | 绑定值                                                       | string / number / boolean | —                                                            | —      |
-| options         | 选项值                                                       | array                     | eg：[{key: '0', value: '个人', isFlag: false}]<br />下方有解释 |        |
 | mark            | 是否显示提示说明                                             | string                    | —                                                            | —      |
 | required        | 是否必填，如不设置，则会根据校验规则自动生成                 | boolean                   | —                                                            | false  |
 | disabled        | 是否禁用                                                     | boolean                   | —                                                            | false  |
@@ -225,13 +232,48 @@
 <template>
 	<div>
     <el-form ref="form" :model="form" :rules="rules">
-      <e-date start-date="2020-05" end-date="2020-10" format="yyyy/MM" type="month" v-model="form.date1"></e-date>
-      <e-date label="时间" :label-width="labelWidth" start-date="2020/05" size="mini" format="yyyy/MM" type="month" v-model="form.date2"
-      @focus="focus" @blur="blur" @change="change">
+      <e-date
+        label="时间"
+        start-date="2020-05"
+        end-date="2020-10"
+        format="yyyy/MM"
+        type="month"
+        v-model="form.date1"
+      ></e-date>
+      <e-date
+        label="时间"
+        :label-width="labelWidth"
+        start-date="2020/05"
+        size="mini"
+        format="yyyy/MM"
+        type="month"
+        v-model="form.date2"
+        @focus="focus"
+        @blur="blur"
+        @change="change"
+      >
       </e-date>
-      <e-date label="开始时间" :label-width="labelWidth" start-date="2020-11-01" end-date="2020-12-28" size="small" v-model="form.date3" placeholder="请选择开始时间" required></e-date>
-      <e-date label="结束时间" :label-width="labelWidth" start-date="2020-11-01" end-date="2020-12-28" size="small" mark="我是提示文字" v-model="form.date4" placeholder="请选择结束时间"
-      prop="date4"></e-date>
+      <e-date
+        label="开始时间"
+        :label-width="labelWidth"
+        start-date="2020-11-01"
+        end-date="2020-12-28"
+        size="small"
+        v-model="form.date3"
+        placeholder="请选择开始时间"
+        required
+      ></e-date>
+      <e-date
+        label="结束时间"
+        :label-width="labelWidth"
+        start-date="2020-11-01"
+        end-date="2020-12-28"
+        size="small"
+        mark="我是提示文字"
+        v-model="form.date4"
+        placeholder="请选择结束时间"
+        prop="date4"
+      ></e-date>
       <el-button @click="submit" type="primary" style="margin-left: 40px;">提交</el-button>
     <el-form>
   </div>
@@ -239,41 +281,42 @@
 
 <script>
  module.exports = {
-    data() {
-      return {
-        labelWidth: '130px',
-        form: {
-        	date1: '2020/06',
-          date2: '',
-          date3: '',
-          date4: '',
-        },
-        rules: {
-           date4: [{required: true, message: '请选择结束时间', trigger: 'change'}],
-        }
-      }
-    },
-    methods: {
-      //提交
-      submit(){
-        console.log(this.form);
-        this.$refs.form.validate((valid, object) => {
-          console.log(valid);
-          console.log(object);
-        });
+  data() {
+    return {
+      labelWidth: '130px',
+      form: {
+        date1: '2020/06',
+        date2: '',
+        date3: '',
+        date4: '',
       },
-      change(){
-        console.log('change');
-      },
-      blur(){
-        console.log('blur');
-      },
-      focus(){
-        console.log('focus');
+      rules: {
+          date4: [{required: true, message: '请选择结束时间', trigger: 'change'}],
       }
     }
-  };
+  },
+  methods: {
+    //提交
+    submit(){
+      console.log(this.form);
+      this.$refs.form.validate((valid, object) => {
+        console.log(valid);
+        console.log(object);
+      });
+    },
+    change(){
+      console.log('change');
+    },
+    blur(){
+      console.log('blur');
+    },
+    focus(){
+      console.log('focus');
+    }
+  }
+};
 </script>
+
 
 ### Attributes
 
@@ -309,71 +352,79 @@
 
 <script v-pre type="text/x-template" id="eSelect">
 <template>
-<div>
+  <div>
     <el-form :model="elform" ref="elform" :rules="rules">
-      <e-select :optionArr="optionArr" :filterable='true' v-model="elform.region" select-label="one" prop='region' @selchange='elform.region = $event'></e-select>
-      <e-select :optionArr="optionArr" v-model="elform.region" prop='region3' @selchange='elform.region3 = $event'></e-select>
-      <e-select :optionArr="optionArr" v-model="elform.region2" select-label="three" prop='region2' @selchange='elform.region2 = $event'>
+      <e-select
+        :optionArr="optionArr"
+        :filterable="true"
+        v-model="elform.region"
+        select-label="one"
+        prop="region"
+        @selchange="elform.region = $event"
+      ></e-select>
+      <e-select :optionArr="optionArr" v-model="elform.region" prop="region3" @selchange="elform.region3 = $event"></e-select>
+      <e-select :optionArr="optionArr" v-model="elform.region2" select-label="three" prop="region2" @selchange="elform.region2 = $event">
         <div slot="select" slot-scope="item">
-          {{item}}
-          <i style="margin-right:20px;">{{item.data.label}}</i>
-        </div> 
+          {{ item }}
+          <i style="margin-right:20px;">{{ item.data.label }}</i>
+        </div>
       </e-select>
     </el-form>
-    <button @click="text">校验</button>
-</div>
+    <button @click="selectCheck">校验</button>
+  </div>
 </template>
 
 <script>
- module. exports = {
-
-    data() {
-      return {
-        rules: {
-          region2: [{ required: true, message: '请选择活动区域', trigger: 'change' }],
-          region: [{ required: true, message: '请选择活动区域fdsfsfd', trigger: 'change' }],
-          region3: [{ required: true, message: '请选择活DSSSSSSSSS动区域fdsfsfd', trigger: 'change' }]
-        },
-        elform: {
-          region:'',
-          region2:'',
-          region3:''
-        },
-        optionArr: [
+module.exports = {
+  data() {
+    return {
+      rules: {
+        region2: [{ required: true, message: '请选择活动区域', trigger: 'change' }],
+        region: [{ required: true, message: '请选择活动区域', trigger: 'change' }],
+        region3: [{ required: true, message: '请选择活动区域', trigger: 'change' }]
+      },
+      elform: {
+        region: '',
+        region2: '',
+        region3: ''
+      },
+      optionArr: [
         {
-          value: "选项1",
-          label: "黄金糕",
+          value: '选项1',
+          label: '黄金糕',
           isFlag: false
         },
         {
-          value: "选项2",
+          value: '选项2',
           isFlag: false,
-          label: "双皮奶"
+          label: '双皮奶'
         },
         {
-          value: "选项3",
+          value: '选项3',
           isFlag: false,
-          label: "蚵仔煎"
+          label: '蚵仔煎'
         }
       ]
-      }
-    },
-    methods: {
-      text() {
-        this.$refs["elform"].validate((valid,object)=> {
-          if (!valid) {console.log('未通过校验');
-            // this.$nextTick(() => {
-            //   var isError= document.getElementsByClassName("is-error");
-            //   console.log(isError);
-            //   isError[0].querySelector('input').focus();
-            // })
-            return
-          }else {console.log(this.elform)}
-        })
-      }
     }
-
+  },
+  methods: {
+    selectCheck() {
+      this.$refs['elform'].validate((valid, object) => {
+        if (!valid) {
+          console.log('未通过校验')
+          // this.$nextTick(() => {
+          //   var isError= document.getElementsByClassName("is-error");
+          //   console.log(isError);
+          //   isError[0].querySelector('input').focus();
+          // })
+          return
+        } else {
+          console.log(this.elform)
+        }
+      })
+    }
   }
+}
 </script>
 
 ### Attributes属性值
@@ -403,24 +454,18 @@
 <script v-pre type="text/x-template" id="eUpload">
 <template>
   <div>
-
     <el-form>
       <e-upload></e-upload>
     </el-form>
-
   </div>
 </template>
 
 <script>
- module. exports = {
-
-    data() {
-      return {
-        
-      }
-    }
-
+module.exports = {
+  data() {
+    return {}
   }
+}
 </script>
 
 ###### 
@@ -454,34 +499,34 @@
 <script v-pre type="text/x-template" id="eUploadId">
 <template>
   <div>
-    <e-upload-id :empty='empty' :is-remove='isRemove'></e-upload-id>
+    <e-upload-id :empty="empty" :is-remove="isRemove"></e-upload-id>
     <button @click="isRemoveFn">上传失败</button>
     <button @click="isEmptyFn">清空</button>
   </div>
 </template>
 <script>
- module.exports = {
-    data() {
-      return {
-        empty: false, // 是否清空
-        isRemove: false, // 上传失败（删除）
-      }
-    },
-    methods: {
-      isEmptyFn() {
+module.exports = {
+  data() {
+    return {
+      empty: false, // 是否清空
+      isRemove: false // 上传失败（删除）
+    }
+  },
+  methods: {
+    isEmptyFn() {
       this.empty = true
-        this.$nextTick(() => {
-          this.empty = false
-        })
-      },
-      isRemoveFn(){
-        this.isRemove = true
-        this.$nextTick(() => {
-          this.isRemove = false
-        })
-      },
+      this.$nextTick(() => {
+        this.empty = false
+      })
+    },
+    isRemoveFn() {
+      this.isRemove = true
+      this.$nextTick(() => {
+        this.isRemove = false
+      })
     }
   }
+}
 </script>
 
 
@@ -516,16 +561,17 @@
     <el-form :model="ruleForm" :rules="rules" ref="ruleForm" inline-message>
       <e-equipment
         :table-data="dataList"
-        :ischg-trans="pattern"
+        :pattern="pattern"
         prop="chosen_capacity"
         v-model="ruleForm.chosen_capacity"
-        @handle-selection-change='handleSelectionChange'
+        @handle-selection-change="handleSelectionChange"
       >
         <!-- 表格标题 -->
         <template slot="title">
-          <p slot="title">当前暂停设备{{ dataList.length }}台， 总容量 {{ total_capacity }}kVA。
-              已选择启用设备 {{ chosen_station }}台， 启用设备总容量
-              {{ ruleForm.chosen_capacity }}kVA</p>
+          <p slot="title">
+            当前暂停设备{{ dataList.length }}台， 总容量 {{ total_capacity }}kVA。 已选择启用设备 {{ chosen_station }}台， 启用设备总容量
+            {{ ruleForm.chosen_capacity }}kVA
+          </p>
         </template>
 
         <!-- 表格内容 -->
@@ -533,22 +579,16 @@
           <el-table-column type="selection" label width="32"></el-table-column>
           <el-table-column prop="name" label>
             <template slot-scope="scope">
-                <p>
-                  <span class="tranClass textOverflow">{{
-                    scope.row.name
-                  }}</span>
-                  <span class="tranClass2 textOverflow"
-                    >设备编号:{{ scope.row.Id }}</span
-                  >
-                  <span
-                    >设备容量:{{ scope.row.number }}&nbsp;kVA</span
-                  >
-                </p>
-              </template>
+              <p>
+                <span class="tranClass textOverflow">{{ scope.row.name }}</span>
+                <span class="tranClass2 textOverflow">设备编号:{{ scope.row.Id }}</span>
+                <span>设备容量:{{ scope.row.number }}&nbsp;kVA</span>
+              </p>
+            </template>
           </el-table-column>
         </template>
       </e-equipment>
-    
+
       <button @click.prevent="handleChgTrans()">
         转换模式
       </button>
@@ -557,80 +597,78 @@
 </template>
 
 <script>
- module.exports = {
-    data() {
-      return {
-        rules: {
-          chosen_capacity: [
-            { required: true, message: '请输入容量', trigger: ['blur', 'change'] },
-          ]
+module.exports = {
+  data() {
+    return {
+      rules: {
+        chosen_capacity: [{ required: true, message: '请输入容量', trigger: ['blur', 'change'] }]
+      },
+      pattern: '1',
+      isRemove: false, // 是否删除
+      dataList: [
+        {
+          Id: '10000157637',
+          number: '101',
+          name: '死数据1'
         },
-        pattern: '1',
-        isRemove: false, // 是否删除
-        dataList: [
-          {
-            "Id": "10000157637",
-            "number": "101",
-            "name": "死数据1",
-          },
-          {
-            "Id": "10000157637",
-            "number": "202",
-            "name": "死数据2",
-          }
-        ],
-        ruleForm: {
-          chosen_capacity: '',
-        },
-        chosen_station: 0, //  已启动设备台数
-        dataListAct: [], // 选中的设备数据集列表
-      }
-    },
-    computed:{
-      // 所有设备总容量
-      total_capacity(){
-        var num = 0
-        this.dataList.forEach(item => {
-          num += Number(item.number)
-        })
-        return num
-      }
-    },
-    watch: {
-      'ruleForm.chosen_capacity': {
-        handler(newVal, oldVal) {
-          console.log(newVal, '父组件newVal')
+        {
+          Id: '10000157637',
+          number: '202',
+          name: '死数据2'
         }
+      ],
+      ruleForm: {
+        chosen_capacity: ''
+      },
+      chosen_station: 0, //  已启动设备台数
+      dataListAct: [] // 选中的设备数据集列表
+    }
+  },
+  computed: {
+    // 所有设备总容量
+    total_capacity() {
+      var num = 0
+      this.dataList.forEach(item => {
+        num += Number(item.number)
+      })
+      return num
+    }
+  },
+  watch: {
+    'ruleForm.chosen_capacity': {
+      handler(newVal, oldVal) {
+        console.log(newVal, '父组件newVal')
       }
+    }
+  },
+  methods: {
+    handleChgTrans() {
+      console.log('转换')
+      this.pattern = this.pattern == '1' ? '0' : '1'
+      // 重新输入申请恢复容量
+      this.ruleForm.chosen_capacity = ''
+      // 已启动设备数
+      this.chosen_station = 0
     },
-    methods: {
-      handleChgTrans(){
-        console.log('转换')
-        this.pattern = this.pattern == '1' ? '0' : '1'
-        // 重新输入申请恢复容量
-        this.ruleForm.chosen_capacity = ''
-        // 已启动设备数
-        this.chosen_station = 0;
-      },
-      // 选中的设备
-      handleSelectionChange(val) {
-        console.log(val,'选中的设备')
-        // 重新设置为空
-        this.ruleForm.chosen_capacity = ''; // 已启用设备总容量
-        this.chosen_station = val.length; // 已启动设备数
+    // 选中的设备
+    handleSelectionChange(val) {
+      console.log(val, '选中的设备')
+      // 重新设置为空
+      this.ruleForm.chosen_capacity = '' // 已启用设备总容量
+      this.chosen_station = val.length // 已启动设备数
 
-        // 已启用设备总容量
-        val.forEach((item, i) => {
-          // 加上已勾选的设备容量并转为数字类型
-          this.ruleForm.chosen_capacity += parseFloat(item.number);
-          // 转化为数字类型
-          this.ruleForm.chosen_capacity = parseFloat(this.ruleForm.chosen_capacity)
-        });
-    
-        this.dataListAct = val
-      },
+      // 已启用设备总容量
+      val.forEach((item, i) => {
+        // 加上已勾选的设备容量并转为数字类型
+        this.ruleForm.chosen_capacity += parseFloat(item.number)
+        // 转化为数字类型
+        this.ruleForm.chosen_capacity = parseFloat(this.ruleForm.chosen_capacity)
+      })
+
+      this.dataListAct = val
     }
   }
+}
 </script>
 <!-- <style scoped>
 /* 文字单行溢出 */
@@ -666,3 +704,132 @@
 | 事件名称              | 说明                 | 类型  |
 | :-------------------- | :------------------- | :---- |
 | handleSelectionChange | 将选中的设备发送出来 | Array |
+
+
+## e-table表格
+
+<vuep template="#eTable"></vuep>
+
+<script v-pre type="text/x-template" id="eTable">
+<template>
+  <e-table :table-data="tableData" :column-data="columnData"> </e-table>
+</template>
+<script>
+module.exports = {
+  data() {
+    return {
+      tableData: [
+        {
+          id: 1,
+          factoryName:
+            "企业名称一(哎呀哎呀哎呀名字太长展示不下啦)",
+          industry: "行业一",
+          problemLevel: "1",
+          childA: "孩子A",
+          childB: "孩子B",
+        },
+        {
+          id: 2,
+          factoryName: "企业名称二",
+          industry: "",
+          problemLevel: "",
+          childA: "",
+          childB: "",
+        },
+      ],
+      columnData: [
+        {
+          label: "序号",
+          type: "index",
+          width: "55px",
+        },
+        {
+          label: "企业名称",
+          prop: "factoryName",
+          tooltip: true,
+        },
+        {
+          label: "行业",
+          type: "link",
+          prop: "industry",
+          click: (rowData) => this.handleClick(rowData),
+        },
+        {
+          label: "报警级别",
+          prop: "problemLevel",
+          type: "find",
+          customTip: "这是企业的报警级别说明",
+          option: [
+            { label: "高", value: "1" },
+            { label: "中", value: "2" },
+          ],
+        },
+        {
+          label: "父亲表头",
+          type: "innerColumn",
+          children: [
+            {
+              prop: "childA",
+              label: "子级表头A",
+            },
+            {
+              prop: "childB",
+              label: "子级表头B",
+            },
+          ],
+        },
+        {
+          type: "operation",
+          label: "操作",
+          children: [
+            {
+              name: "查看",
+              key: "see",
+              isHide: true,
+              click: (rowData) => this.handleEdit(rowData, "see"),
+            },
+            {
+              name: "编辑",
+              key: "edit",
+              click: (rowData) => this.handleEdit(rowData, "edit"),
+            },
+            {
+              name: "删除",
+              key: "delete",
+              type: "danger",
+              // popover: true,
+              // content: "确认要删除吗？",
+              click: (rowData) => this.handleDelete(rowData, "delete"),
+            },
+          ],
+        },
+      ],
+    };
+  },
+  methods: {
+    handleEdit(row, type) {
+      console.log(type, row);
+    },
+    handleDelete(row, type) {
+      console.log(type, row);
+    },
+    handleClick(row) {
+      console.log(row);
+    }
+  }
+};
+</script>
+
+### Option Attributes
+
+| 参数           | 说明                                                         | 类型          | 默认值            |
+| -------------- | ------------------------------------------------------------ | ------------- | ----------------- |
+| loading   | 是否开启加载动画 。 | boolean        | false                 |
+| table-data | 显示的数据 | array | -- |
+| column-data | 操作列   | array        | —                 |
+| 以下为column-data内部的参数
+| type | 列类型                         | string       | -             |
+| isHide | 是否隐藏该操作按钮                                      | boolean        | false                 |
+| popover | 操作按钮是否进行提示（比如点击删除按钮弹出是否确认），该功能组件已实现且在其他地方测试通过，该文档疑似版本有问题，参数待生效 | boolean | false |
+| content | popover为true时，操作按钮是否进行提示的文字 | boolean | false |
+| 更多请看示例和表格组件源码

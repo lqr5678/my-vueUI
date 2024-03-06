@@ -1,21 +1,26 @@
 <template>
   <el-form-item :label-width="labelWidth" :required="required" :prop="prop" :rules="rules">
-      <div slot="label" v-if="label" class="label">
-				{{label}}
-				<el-tooltip class="item" effect="dark" :content="mark" placement="bottom">
-					<i class="el-icon-question mark" v-if="mark"></i>
-				</el-tooltip>
-				：
-			</div>
-      <el-date-picker v-model="localValue" :type="type" :placeholder="placeholder" :size="size" 
+    <div slot="label" v-if="label" class="label">
+      {{ label }}
+      <el-tooltip class="item" effect="dark" :content="mark" placement="bottom">
+        <i class="el-icon-question mark" v-if="mark"></i>
+      </el-tooltip>
+      ：
+    </div>
+    <el-date-picker
+      v-model="localValue"
+      :type="type"
+      :placeholder="placeholder"
+      :size="size"
       :format="format"
       :value-format="format"
       :disabled="false"
-      :picker-options="pickerOptions" 
-      @change="$emit('change', $event);" 
-      @blur="$emit('blur', $event);" 
-      @focus="$emit('focus', $event);">
-      </el-date-picker>
+      :picker-options="pickerOptions"
+      @change="$emit('change', $event)"
+      @blur="$emit('blur', $event)"
+      @focus="$emit('focus', $event)"
+    >
+    </el-date-picker>
   </el-form-item>
 </template>
 
@@ -46,7 +51,7 @@ export default {
     label: String,
     labelWidth: {
       type: String,
-      default: "auto",
+      default: 'auto'
     },
     type: {
       type: String,
@@ -67,7 +72,7 @@ export default {
       type: Boolean,
       default: false
     },
-		mark: String,
+    mark: String,
     size: String,
     prop: String,
     rules: Array
@@ -79,41 +84,41 @@ export default {
   /* mounted(){
     console.log(this.localValue)
   }, */
-	watch: {
-		value(newVal){
-			this.localValue = newVal
-		}
-	}, 
-  data(){
+  watch: {
+    value(newVal) {
+      this.localValue = newVal
+    }
+  },
+  data() {
     return {
-			localValue: this.value
+      localValue: this.value
     }
   },
   computed: {
     pickerOptions() {
-      var _this = this;
+      var _this = this
       return {
         disabledDate(time) {
-          if(_this.startDate === '' && _this.endDate === '') return true;
-          var startD = new Date(_this.startDate); // 获取到的起始日期
-          var endD = new Date(_this.endDate); // 获取到的起始日期
-          var start, end;
-          start = startD.getTime();  
-          end = endD.getTime(); 
-          return time.getTime() < start || time.getTime() > end; // 这里就是设置日期不能被点击
+          if (_this.startDate === '' && _this.endDate === '') return true
+          var startD = new Date(_this.startDate) // 获取到的起始日期
+          var endD = new Date(_this.endDate) // 获取到的起始日期
+          var start, end
+          start = startD.getTime()
+          end = endD.getTime()
+          return time.getTime() < start || time.getTime() > end // 这里就是设置日期不能被点击
         }
-      };
-    },
+      }
+    }
   }
-};
+}
 </script>
 
 <style>
 .label {
-	display: inline-block;
+  display: inline-block;
 }
 .mark {
-	margin: 0 2px;
-	cursor: pointer;
+  margin: 0 2px;
+  cursor: pointer;
 }
 </style>

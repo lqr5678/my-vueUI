@@ -7,8 +7,9 @@ import eUpload from "../packages/e-upload/index";
 import eRadio from "../packages/e-radio/index";
 import eDate from "../packages/e-date/index";
 import eInput from "../packages/e-input/index";
+import eTable from "../packages/e-table/index";
 
-const components = [MyButton, eUploadId, eEquipment, eSelect, eUpload, eRadio, eDate, eInput];
+const components = [MyButton, eUploadId, eEquipment, eSelect, eUpload, eRadio, eDate, eInput, eTable];
 
 // Vue.use() 一次性安装所有组件
 const install = function(Vue) {
@@ -35,5 +36,6 @@ export default {
   eUpload,
   eRadio,
   eDate,
-  eInput
+  eInput,
+  eTable
 };

@@ -35,8 +35,9 @@ https://lqr5678.github.io/EUI/
 
 
 # 2教程：
-# 基于@guoqzuo/vue-chart
+基于@guoqzuo/vue-chart
 docsify 官网：https://docsify.js.org/#/zh-cn/
+
 基于 Vue 2.x 组件库，用于测试怎么写一个 Vue 组件库，并为该组件库做一个类似 ElemnetUI 官网的文档。
 
 ## 安装

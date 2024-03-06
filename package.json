@@ -1,9 +1,9 @@
 {
-  "name": "@wew/EUI",
+  "name": "@wew/e_vue",
   "version": "0.0.0",
   "description": "vue e library",
-  "main": "lib/EUI.umd.min.js",
-  "unpkg": "lib/EUI.umd.min.js",
+  "main": "lib/e_vue.umd.min.js",
+  "unpkg": "lib/e_vue.umd.min.js",
   "directories": {
     "doc": "docs",
     "example": "examples",
@@ -19,7 +19,7 @@
     "core-js": "^3.6.5",
     "echarts": "^4.9.0",
     "lodash": "^4.17.20",
-    "element-ui": "^2.10.1",
+    "element-ui": "2.15.14",
     "vue": "^2.6.11"
   },
   "devDependencies": {
