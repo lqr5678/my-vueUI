@@ -192,7 +192,7 @@ module.exports = {
 <script v-pre type="text/x-template" id="myLoading">
 <template>
   <div>
-    <my-loading :is-full-sreen="false"></my-loading>
+    <my-loading :is-full-sreen="false" loading-type="wave"></my-loading>
   </div>
 </template>
 <script>

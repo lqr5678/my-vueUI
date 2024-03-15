@@ -12,7 +12,7 @@ npm run build:lib
 ```
 ## 在线项目预览：
 
-https://lqr5678.github.io/EUI/
+https://lqr5678.github.io/myUI/
 
 
 
