@@ -1,15 +1,11 @@
 // src/index.js 示例，主要是引入(import)组件再导出(export)，包括Vue.use所需的 install函数处理
-import MyButton from "../packages/my-button/index";
-import eUploadId from "../packages/e-upload-id/index";
-import eEquipment from "../packages/e-equipment/index";
-import eSelect from "../packages/e-select/index";
-import eUpload from "../packages/e-upload/index";
-import eRadio from "../packages/e-radio/index";
-import eDate from "../packages/e-date/index";
-import eInput from "../packages/e-input/index";
-import eTable from "../packages/e-table/index";
+import myTabs from '../packages/my-tabs/index'
+import myTag from '../packages/my-tag/index'
+import myStep from '../packages/my-step/index'
+import myProgress from '../packages/my-progress/index'
+import myLoading from '../packages/my-loading/index'
 
-const components = [MyButton, eUploadId, eEquipment, eSelect, eUpload, eRadio, eDate, eInput, eTable];
+const components = [myTabs, myTag, myStep, myProgress, myLoading];
 
 // Vue.use() 一次性安装所有组件
 const install = function(Vue) {
@@ -29,13 +25,9 @@ if (typeof window !== undefined && window.Vue) {
 
 export default {
   install, // 用于ES modules，import Vue 后直接使用 Vue.use()
-  MyButton, // 支持解构赋值按需引入单个组件
-  eUploadId,
-  eEquipment,
-  eSelect,
-  eUpload,
-  eRadio,
-  eDate,
-  eInput,
-  eTable
+  myTabs,
+  myTag,
+  myStep,
+  myProgress,
+  myLoading
 };
