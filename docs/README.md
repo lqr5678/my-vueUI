@@ -19,8 +19,8 @@ module.exports = {
     return {
       tab: 0,
       tabs: [
-        { name: '图片' },
-        { name: '视频' },
+        { name: '图片'},
+        { name: '视频'},
         { name: '文件'},
         // { name: '代码', disabled: true },
       ]
@@ -39,7 +39,7 @@ module.exports = {
 
 | 参数              | 说明       | 类型    | 默认值 |
 | ----------------- | ---------- | ------- | ------ |
-| tabsName          | 键       | String  | name   |
+| tabsName          | 键         | String  | name   |
 | 内部对象.disabled | 是否可点击 | Boolean | false  |
 
 ### Tag Events
@@ -65,10 +65,10 @@ module.exports = {
     return {
       btnVal: 1,
       buttonsList: [
-        { value: 1,name: '图片', icon: "icon-picture" },
-        { value: 2,name: '视频', icon: "icon-video" },
-        { value: 3,name: '文件', icon: "icon-file" },
-        { value: 4,name: '代码', icon: "icon-code", disabled: true },
+        { value: 1, name: '图片', icon: "icon-picture" },
+        { value: 2, name: '视频', icon: "icon-video" },
+        { value: 3, name: '文件', icon: "icon-file" },
+        { value: 4, name: '代码', icon: "icon-code", disabled: true },
       ]
     }
   },
@@ -79,6 +79,22 @@ module.exports = {
   }
 }
 </script>
+
+### Tag Attributes
+
+| 参数     | 说明       | 类型    | 默认值 |
+| -------- | ---------- | ------- | ------ |
+| valueKey | 键值       | String  | value   |
+| type | primary、success、warning、danger       | String  | default   |
+| 内部对象.disabled | 是否可点击 | Boolean | false  |
+| 内部对象.icon | 使用阿里在线图标，目前配置了icon-file、icon-code、icon-picture、icon-video、icon-custom-phone、icon-user、icon-share、icon-delete、icon-edit| String |   |
+
+### Tag Events
+
+| 事件名称 | 说明             | 回调 Type |
+| :------- | :--------------- | :-------- |
+| change   | 点击时触发的事件 | Function  |
+
 
 ## Checkbox
 
@@ -97,10 +113,10 @@ module.exports = {
     return {
       checkList: [1,2],
       optionsList: [
-        { value: 1,label: '图片', icon: "icon-picture" },
-        { value: 2,label: '视频', icon: "icon-video" },
-        { value: 3,label: '文件', icon: "icon-file" },
-        // { value: 4,label: '代码', icon: "icon-code", disabled: true },
+        { value: 1, label: '图片', icon: "icon-picture" },
+        { value: 2, label: '视频', icon: "icon-video" },
+        { value: 3, label: '文件', icon: "icon-file" },
+        // { value: 4, label: '代码', icon: "icon-code", disabled: true },
       ]
     }
   },
