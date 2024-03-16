@@ -278,18 +278,25 @@ module.exports = {
 <script v-pre type="text/x-template" id="myLoading">
 <template>
   <div>
-    <my-loading :is-full-sreen="false" loading-type="wave"></my-loading>
+    <button @click="showLoading = !showLoading">开关</button>
+    <my-loading v-model="showLoading" :is-full-sreen="false" loading-type="wave"></my-loading>
   </div>
 </template>
 <script>
+module.exports = {
+  data () {
+    return {
+      showLoading: true
+    }
+  }
+}
 </script>
 
 ### Tag Attributes
 
 | 参数          | 说明             | 类型                         | 默认值 |
 | ------------- | ---------------- | ---------------------------- | ------ |
-| auto-close    | 点击自动关闭     | Boolean                      | true   |
-| show-loading  | 是否显示加载效果 | Boolean                      | true   |
+| auto-close    | 点击加载图层是否关闭     | Boolean                      | true   |
 | loading-type  | 加载类型         | String（wave、dots、circle） | wave   |
 | loading-text  | 文字             | 加载中......                 |        |
 | is-full-sreen | 是否全屏展示     | Boolean                      | false  |

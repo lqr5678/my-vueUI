@@ -1,5 +1,5 @@
 <template>
-  <div class="loading-warp " :class="isFullSreen === true ? 'full-screen' : ''" v-if="showLoading" @click="close">
+  <div class="loading-warp" :class="isFullSreen === true ? 'full-screen' : ''" v-if="value" @click="close">
     <div class="sk-fading-circle">
       <section v-if="loadingType === 'wave'">
         <div class="sk-wave">
@@ -46,7 +46,7 @@ export default {
       type: Boolean,
       default: true
     },
-    showLoading: {
+    value: {
       type: Boolean,
       default: true
     },
@@ -66,7 +66,7 @@ export default {
   methods: {
     close() {
       if (this.autoClose) {
-        this.showLoading = false
+        this.$emit('input', false)
       }
     }
   }
