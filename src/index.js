@@ -4,8 +4,10 @@ import myTag from '../packages/my-tag/index'
 import myStep from '../packages/my-step/index'
 import myProgress from '../packages/my-progress/index'
 import myLoading from '../packages/my-loading/index'
+import myButtonGroup from '../packages/my-button-group/index'
+import myCheckbox from '../packages/my-checkbox/index'
 
-const components = [myTabs, myTag, myStep, myProgress, myLoading];
+const components = [myTabs, myTag, myStep, myProgress, myLoading, myButtonGroup, myCheckbox];
 
 // Vue.use() 一次性安装所有组件
 const install = function(Vue) {
@@ -29,5 +31,7 @@ export default {
   myTag,
   myStep,
   myProgress,
-  myLoading
+  myLoading,
+  myButtonGroup,
+  myCheckbox
 };
