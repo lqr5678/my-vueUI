@@ -113,9 +113,9 @@ module.exports = {
     return {
       checkList: [1,2],
       optionsList: [
-        { value: 1, label: '图片',},
-        { value: 2, label: '视频',},
-        { value: 3, label: '文件',},
+        { value: 1, label: '图片'},
+        { value: 2, label: '视频'},
+        { value: 3, label: '文件'},
         // { value: 4, label: '代码', disabled: true },
       ]
     }
