@@ -87,7 +87,7 @@ module.exports = {
 | valueKey | 键值       | String  | value   |
 | type | primary、success、warning、danger       | String  | default   |
 | 内部对象.disabled | 是否可点击 | Boolean | false  |
-| 内部对象.icon | 使用阿里在线图标，目前配置了icon-file、icon-code、icon-picture、icon-video、icon-custom-phone、icon-user、icon-share、icon-delete、icon-edit| String |   |
+| 内部对象.icon | 使用的阿里图标，目前配置了icon-file、icon-code、icon-picture、icon-video、icon-custom-phone、icon-user、icon-share、icon-delete、icon-edit，详情文件https://github.com/lqr5678/lqr5678.github.io/blob/main/myUI/fonts/iconfont.css| String |   |
 
 ### Tag Events
 
