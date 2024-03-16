@@ -113,10 +113,10 @@ module.exports = {
     return {
       checkList: [1,2],
       optionsList: [
-        { value: 1, label: '图片', icon: "icon-picture" },
-        { value: 2, label: '视频', icon: "icon-video" },
-        { value: 3, label: '文件', icon: "icon-file" },
-        // { value: 4, label: '代码', icon: "icon-code", disabled: true },
+        { value: 1, label: '图片',},
+        { value: 2, label: '视频',},
+        { value: 3, label: '文件',},
+        // { value: 4, label: '代码', disabled: true },
       ]
     }
   },
