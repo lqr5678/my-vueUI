@@ -41,6 +41,7 @@ module.exports = {
 | ----------------- | ---------- | ------- | ------ |
 | tabsName          | 键         | String  | name   |
 | 内部对象.disabled | 是否可点击 | Boolean | false  |
+| 内部对象.hide | 是否隐藏 | Boolean | false  |
 
 ### Tag Events
 
